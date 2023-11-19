@@ -1,5 +1,6 @@
-from django.contrib.auth.models import User
 from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 
 
 class Event(models.Model):
@@ -21,5 +22,7 @@ class Program(models.Model):
     specialization = models.CharField(max_length=255)
 
 
-# class Information(models.Model):
-#     text = models.TextField()
+class Information(models.Model):
+    text = models.TextField()
+    vector = ArrayField(base_field=models.FloatField())
+
